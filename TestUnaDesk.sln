@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUnaDesk", "TestUnaDesk\TestUnaDesk.csproj", "{721ACE10-0AFE-4824-B6F0-99F00DCA8A23}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7E05A385-F2A4-4F79-ACA9-9DB6F36008E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Draw", "..\Draw\Draw.csproj", "{67B1A82B-8EC5-4B6D-9C70-8E1248271513}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{721ACE10-0AFE-4824-B6F0-99F00DCA8A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{721ACE10-0AFE-4824-B6F0-99F00DCA8A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{721ACE10-0AFE-4824-B6F0-99F00DCA8A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{721ACE10-0AFE-4824-B6F0-99F00DCA8A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E05A385-F2A4-4F79-ACA9-9DB6F36008E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E05A385-F2A4-4F79-ACA9-9DB6F36008E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E05A385-F2A4-4F79-ACA9-9DB6F36008E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E05A385-F2A4-4F79-ACA9-9DB6F36008E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67B1A82B-8EC5-4B6D-9C70-8E1248271513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67B1A82B-8EC5-4B6D-9C70-8E1248271513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67B1A82B-8EC5-4B6D-9C70-8E1248271513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67B1A82B-8EC5-4B6D-9C70-8E1248271513}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63E2660C-C1D9-4768-90FD-289F36581842}
+	EndGlobalSection
+EndGlobal
