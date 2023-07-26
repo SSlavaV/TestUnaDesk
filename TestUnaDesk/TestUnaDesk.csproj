@@ -109,6 +109,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Draw\Draw.csproj" />
+    <ProjectReference Include="..\Draw\Draw.csproj" />
   </ItemGroup>
 
 </Project>
