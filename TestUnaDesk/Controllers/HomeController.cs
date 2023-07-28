@@ -1,8 +1,8 @@
 ﻿using Draw;
+using Draw.Components;
+using Draw.Wrappers;
 using Microsoft.AspNetCore.Mvc;
-using NUglify.Css;
 using SkiaSharp;
-using StackExchange.Redis;
 using Volo.Abp.AspNetCore.Mvc;
 
 namespace TestUnaDesk.Controllers;
@@ -19,42 +19,35 @@ public class HomeController : AbpController
     {
         using var skDraw = new SkDraw(fileStream.OpenReadStream());
 
-        // configure our brush
-        var redBrush = new SKPaint
+
+
+        var skPoint = new Point(100, 100);
+        var font = new Font
         {
-            Color = new SKColor(0xff, 0, 0),
-            IsStroke = true
-        };
-        var blueBrush = new SKPaint
-        {
-            Color = new SKColor(0, 0, 0xff),
-            IsStroke = true
+            Size = 12,
+            Typeface = SKTypeface.FromFamilyName("Times New Roman", SKFontStyle.Bold),
+            Color = SKColors.Red,
         };
 
-        for (int i = 0; i < 64; i += 8)
-        {
-            var rect = new SKRect(i, i, 256 - i - 1, 256 - i - 1);
-            
-            skDraw.Draw(rect, default , (i % 16 == 0) ? redBrush : blueBrush);
-        }
-        SKPaint textPaint = new SKPaint
-        {
-            Color = SKColors.Chocolate
-        };
-        var skPoint = new SKPoint(100, 100);
-        skDraw.Draw("Hello UnaDesk", skPoint , textPaint);
+        var typeFace = SKTypeface.CreateDefault();
+        
+        var text = new TextBox("assdfadsafs", skPoint, font);
 
-        var blackBrush = new SKPaint
+        var paint = new Paint
         {
-            Color = SKColors.Black
+            IsStroke = false,
+            Color = SKColors.Yellow,
         };
 
-        var circle = new Circle
-        {
-            Radius = 50f
-        };
+        var rect = new Rectangle(skPoint.X, skPoint.Y, 100, 100, paint);
 
-        skDraw.Draw(circle, skPoint, blackBrush);
+        var circle = new Circle(skPoint.X, skPoint.Y, 100, paint);
+
+       
+        skDraw.Draw(rect);
+        skDraw.Draw(circle);
+        skDraw.Draw(text);
+
         return File(skDraw.Save(),"image/jpg");
         
     }

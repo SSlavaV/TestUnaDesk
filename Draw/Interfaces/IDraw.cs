@@ -9,6 +9,6 @@ namespace Draw.Interfaces
 {
     public interface IDraw
     {
-        public void Draw(object sKObject, SKPoint point, SKPaint paint);
+         void Draw(object sKObject, SKPoint point, SKPaint paint);
     }
 }
