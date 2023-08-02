@@ -29,9 +29,11 @@ namespace Draw.Wrappers
         }
         public SKColor Color { get; set; }
         public Paint ToSkPaint()
-        { 
-            var skpaint = new Paint(this);
-            skpaint.Color = Color;
+        {
+            var skpaint = new Paint(this)
+            {
+                Color = Color
+            };
             return skpaint; 
         }
 

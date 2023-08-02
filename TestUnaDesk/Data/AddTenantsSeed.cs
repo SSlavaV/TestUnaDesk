@@ -29,19 +29,8 @@ namespace TestUnaDesk.Data
             {
                 var secondTenant = await _tenantManager.CreateAsync("secondTenant");//new CustomTenant(Guid.Parse("529A0B4F-C78E-43D3-87F2-EB55E0ECA556"), "secondTenant");
                 secondTenant.SetConnectionString("anotherDb", "Host=localhost;Port=5432;Database=TestUnaDesk;User ID=postgres;Password=1Qaz@wsx;");
-                //var tenants = new[] { new CustomTenant(Guid.Parse("F3846D90-7C4F-4F10-9A89-1E55DE75F643"), "fistTenant"), secondTenant };              
-               
-                try
-                {
-
-                    var dbontext = await _tenantRepository.InsertAsync(secondTenant,true);
-                    
-                    
-                }
-                catch(Exception ex) 
-                {
-                    throw;
-                }
+                //var tenants = new[] { new CustomTenant(Guid.Parse("F3846D90-7C4F-4F10-9A89-1E55DE75F643"), "fistTenant"), secondTenant }; 
+                    var dbontext = await _tenantRepository.InsertAsync(secondTenant,true);             
             }
 
         }

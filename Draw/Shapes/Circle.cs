@@ -1,10 +1,11 @@
-﻿using Draw.Wrappers;
+﻿using Draw.Components;
+using Draw.Wrappers;
 using SkiaSharp;
 
-namespace Draw.Components
+namespace Draw.Shapes
 {
 
-    public class Circle:BaseComponent
+    public class Circle : BaseComponent
     {
         public Circle() { }
 

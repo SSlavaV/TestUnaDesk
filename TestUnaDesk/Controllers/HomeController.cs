@@ -1,5 +1,6 @@
 ﻿using Draw;
 using Draw.Components;
+using Draw.Shapes;
 using Draw.Wrappers;
 using Microsoft.AspNetCore.Mvc;
 using SkiaSharp;
@@ -21,17 +22,17 @@ public class HomeController : AbpController
 
 
 
-        var skPoint = new Point(100, 100);
+        var skPoint = new Point(500, 300);
         var font = new Font
         {
-            Size = 12,
-            Typeface = SKTypeface.FromFamilyName("Times New Roman", SKFontStyle.Bold),
-            Color = SKColors.Red,
+            Size = 14,
+            Typeface = SKTypeface.FromFamilyName("reg", SKFontStyle.Normal),
+            Color = SKColor.Parse("#FFFFFF"),
         };
 
         var typeFace = SKTypeface.CreateDefault();
         
-        var text = new TextBox("assdfadsafs", skPoint, font);
+        var text = new TextBox("Это какойто текст", skPoint, font);
 
         var paint = new Paint
         {
@@ -43,10 +44,23 @@ public class HomeController : AbpController
 
         var circle = new Circle(skPoint.X, skPoint.Y, 100, paint);
 
-       
-        skDraw.Draw(rect);
-        skDraw.Draw(circle);
+        var triangle =new Triangle(100, 100, 200,200, 0, 200);
+
+        var tlPoint = new Point(500, 287);
+
+        var toolTip = new ToolTip(200, "Это очеь длиая подсказка, Это очеь длиая подсказка,Это очеь длиая подсказка,Это очеь длиая подсказка, Это очеь длиая подсказка, Это очеь длиая подсказка, Это очеь длиая подсказка, Это очеь длиая подсказка, Это очеь длиая подсказка, Это очеь длиая подсказка, Это очеь длиая подсказка,", tlPoint, font)
+        {
+            BackGroundColor = SKColor.Parse("#4A55A2"),
+            Position = Position.Top,
+            CornerRadius = 10f
+        };
+        //
+
+        // skDraw.Draw(rect);
+        // skDraw.Draw(circle);
         skDraw.Draw(text);
+        //skDraw.Draw(triangle);
+        skDraw.Draw(toolTip);
 
         return File(skDraw.Save(),"image/jpg");
         
