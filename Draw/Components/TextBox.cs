@@ -13,6 +13,29 @@ namespace Draw.Components
             Text = text;
         }
 
+        protected void CalculateSize()
+        {
+            SKPaint paint = Font.ToSkPaint();
+            float spaceWidth = paint.MeasureText(" ");
+            float wordX = 0f;
+            float wordY = 0f;
+            float width = Width + Padding.Left - Padding.Right;
+            foreach (string word in Text.Split(" "))
+            {
+                var wordWidth = paint.MeasureText(word);
+                if (wordWidth > width - wordX)
+                {
+                    wordY += paint.FontSpacing;
+                    wordX = 0;
+                }
+                wordX += wordWidth + spaceWidth;
+            }
+            var height = wordY + Padding.Bottom + Padding.Top + paint.FontSpacing / 2;
+            Size = new Size(Width, height);
+        }
+
+        public float Width { get; set; }
+
         private void PrepareBorderRectangle()
         {
             var paint = Font.ToSkPaint();
@@ -47,8 +70,7 @@ namespace Draw.Components
         }
 
         public bool IsMultiline { get; set; } = false;
-        private string _text = string.Empty; 
-        public string Text { get { return _text; } set { _text = value; PrepareBorderRectangle(); }}
+        public string Text { get; set; }
         public Point Point { get; set; }
         public Font Font { get; set; }
         public Padding Padding { get; }
@@ -66,6 +88,7 @@ namespace Draw.Components
                 Color = BackGroundColor,
                 IsStroke = false,
             };
+            PrepareBorderRectangle();
             var roundRect = new SKRoundRect(SKRect.Create(Border.Point, new SKSize(Size.Width, Size.Height)),CornerRadius);
             canvas.DrawRoundRect(roundRect, background);
             canvas.DrawText(Text,Point,Font.ToSkPaint());
