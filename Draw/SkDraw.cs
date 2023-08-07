@@ -1,27 +1,27 @@
-﻿using Draw.Interfaces;
+﻿using Draw.Canvases;
+using Draw.Interfaces;
 using SkiaSharp;
 using System.Windows.Input;
 
 namespace Draw
 {
-    public class SkDraw : ISave ,IDisposable
+    public class SkDraw<T> : ISave ,IDisposable
+        where T : ICreateble, ISave, IDisposable, new()
     {
-        private readonly SKBitmap _bitmap;
         private readonly SKCanvas _canvas;
         //private readonly Dictionary<Type, Action<DrawObject>> _painter;
+        private readonly T _provider;
 
-        public SkDraw(Stream imageStream)
+        public SkDraw(Stream stream)
         {
-            using var scdata = SKData.Create(imageStream);
-            _bitmap = SKBitmap.Decode(scdata); 
-            _canvas = new SKCanvas(_bitmap);           
+            _provider = new T();
+            _canvas = _provider.Create(stream);         
         }
 
         public void Dispose()
         {
             _canvas.Dispose();
-            _bitmap.Dispose();
-
+            _provider.Dispose();           
         }        
 
         public void Draw(IComponent component)
@@ -33,13 +33,7 @@ namespace Draw
 
         public byte[] Save()
         {
-            using (MemoryStream memStream = new MemoryStream())
-            using (SKManagedWStream wstream = new SKManagedWStream(memStream))
-            {
-                _bitmap.Encode(wstream, SKEncodedImageFormat.Jpeg, 100);
-                byte[] data = memStream.ToArray();
-                return data;
-            };
+           return _provider.Save();
         }
     }
     

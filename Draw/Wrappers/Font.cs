@@ -5,11 +5,11 @@ namespace Draw.Wrappers
     public class Font : SKFont
     {
         public Font() { }
-        public Font(string familyName, float size, SKColor sKColor)           
+        public Font(string familyName, float size, SKColor? sKColor = null)           
         {  
             Typeface = SKTypeface.FromFamilyName(familyName);
             Size = size;
-            Color = sKColor;
+            Color = sKColor ??  SKColors.Black;
         }
         private Font(SKFont font)
         {

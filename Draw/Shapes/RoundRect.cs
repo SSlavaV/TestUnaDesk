@@ -20,7 +20,7 @@ namespace Draw.Shapes
 
         public override void Draw(SKCanvas canvas)
         {
-            var rect = SKRect.Create(Point, new SKSize(this.Width, this.Heigth));
+            var rect = SKRect.Create(Point, new SKSize(this.Size.Width, this.Size.Heigth));
             var roundRect = new SKRoundRect(rect, Radius);
             canvas.DrawRoundRect(roundRect, Paint);
         }

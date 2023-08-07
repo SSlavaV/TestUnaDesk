@@ -11,31 +11,6 @@ namespace Draw.Components
             BackGroundColor = SKColors.AliceBlue;
             Width = width;          
         }
-
-        private Point PointText { get; set; }
-
-        
-       
-        private void DrawText(SKCanvas canvas)
-        {   
-            SKPaint paint = Font.ToSkPaint();
-            float spaceWidth = paint.MeasureText(" ");
-            float wordX = PointText.X + Padding.Left;
-            float wordY = PointText.Y + Padding.Top + paint.FontSpacing / 2;
-            float width = Width + PointText.X + Padding.Left - Padding.Right;
-            foreach (string word in Text.Split(" "))
-            {
-                 var wordWidth = paint.MeasureText(word);               
-                if (wordWidth > width - wordX)
-                {
-                    wordY += paint.FontSpacing;
-                    wordX = PointText.X + Padding.Left;
-                }                
-                canvas.DrawText(word, wordX, wordY, paint);
-                wordX += wordWidth + spaceWidth;
-            }
-        }
-
         public float LinkHeigth { get; set; } = 20f;
         public float LinkWidth { get; set; } = 10f;
 
@@ -77,7 +52,7 @@ namespace Draw.Components
                 x3seek = LinkWidth;
                 y2seek = y3seek = -1 * LinkHeigth;
                 y2seek -= CornerRadius;
-                positionYSeek -= Size.Height + LinkHeigth;
+                positionYSeek -= Size.Heigth + LinkHeigth;
             }
             var triangle = new Triangle(Point.X, Point.Y, Point.X + x2seek, Point.Y + y2seek, Point.X + x3seek, Point.Y + y3seek);
             triangle.BackGroundColor = BackGroundColor;
@@ -89,7 +64,7 @@ namespace Draw.Components
         {
             CalculateSize();
             PrepareLink(canvas);                     
-            var backGround  = new RoundRect(PointText.X, PointText.Y, Size.Width, Size.Height, CornerRadius, new Paint { IsStroke = false, StrokeWidth = 2, Color = BackGroundColor});           
+            var backGround  = new RoundRect(PointText.X, PointText.Y, Size.Width, Size.Heigth, CornerRadius, new Paint { IsStroke = false, StrokeWidth = 2, Color = BackGroundColor});           
             backGround.Draw(canvas);
             DrawText(canvas);
         }

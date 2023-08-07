@@ -3,13 +3,13 @@ namespace Draw.Wrappers
 {
     public class Size
     {
-        public Size(float width, float height)
+        public Size(float width, float heigth)
         {
             Width = width;
-            Height = height;
+            Heigth = heigth;
         }
 
-        public float Height { get; set; }
+        public float Heigth { get; set; }
        public float Width { get; set; }
     }
 }
